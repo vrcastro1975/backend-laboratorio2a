@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><!--mui-inject-first--><style data-jss="" data-meta="MuiTypography">
+.MuiTypography-root {
+  margin: 0;
+}
+.MuiTypography-body2 {
+  font-size: 0.875rem;
+  font-style: normal;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.57;
+  font-stretch: normal;
+  letter-spacing: -0.25px;
+}
+.MuiTypography-body1 {
+  font-size: 1rem;
+  font-style: normal;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.5;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+.MuiTypography-caption {
+  font-size: 0.75rem;
+  font-style: normal;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.33;
+  font-stretch: normal;
+  letter-spacing: 0.4px;
+}
+.MuiTypography-button {
+  font-size: 1rem;
+  font-style: normal;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  font-stretch: normal;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+}
+.MuiTypography-h1 {
+  font-size: 2.5rem;
+  font-style: normal;
+  font-family: Inter;
+  font-weight: 500;
+  line-height: 1.4;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+@media (min-width:600px) {
+  .MuiTypography-h1 {
+    font-size: 3.5rem;
+    line-height: 1.29;
+  }
+}
+@media (min-width:960px) {
+  .MuiTypography-h1 {
+    font-size: 4.5rem;
+    line-height: 1.24;
+    letter-spacing: -1.5px;
+  }
+}
+.MuiTypography-h2 {
+  font-size: 2.25rem;
+  font-style: normal;
+  font-family: Inter;
+  font-weight: 500;
+  line-height: 1.33;
+  font-stretch: normal;
+  letter-spacing: -0.5px;
+}
+@media (min-width:600px) {
+  .MuiTypography-h2 {
+    font-size: 3rem;
+    letter-spacion: normal;
+  }
+}
+@media (min-width:960px) {
+  .MuiTypography-h2 {
+    font-size: 3.5rem;
+    line-height: 1.29;
+  }
+}
+.MuiTypography-h3 {
+  font-size: 2rem;
+  font-style: normal;
+  font-family: Inter;
+  font-weight: 500;
+  line-height: 1.25;
+  font-stretch: normal;
+  letter-spacing: -0.5px;
+}
+@media (min-width:600px) {
+  .MuiTypography-h3 {
+    font-size: 2.5rem;
+    line-height: 1.4;
+  }
+}
+@media (min-width:960px) {
+  .MuiTypography-h3 {
+    font-size: 3rem;
+    line-height: 1.33;
+    letter-spacing: normal;
+  }
+}
+.MuiTypography-h4 {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 1.17;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+@media (min-width:600px) {
+  .MuiTypography-h4 {
+    font-size: 1.75rem;
+    line-height: 1.14;
+  }
+}
+@media (min-width:960px) {
+  .MuiTypography-h4 {
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+}
+.MuiTypography-h5 {
+  font-size: 1.125rem;
+  font-style: normal;
+  font-family: Inter;
+  font-weight: 500;
+  line-height: 1.33;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+@media (min-width:960px) {
+  .MuiTypography-h5 {
+    font-size: 1.5rem;
+  }
+}
+.MuiTypography-h6 {
+  font-size: 0.875rem;
+  font-style: normal;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.29;
+  font-stretch: normal;
+  letter-spacing: 0.5px;
+}
+.MuiTypography-subtitle1 {
+  font-size: 1.125rem;
+  font-style: normal;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.56;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+.MuiTypography-subtitle2 {
+  font-size: 0.875rem;
+  font-style: normal;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.71;
+  font-stretch: normal;
+  letter-spacing: 0.1px;
+}
+.MuiTypography-overline {
+  font-size: 0.625rem;
+  font-style: normal;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+  font-stretch: normal;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.MuiTypography-srOnly {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+}
+.MuiTypography-alignLeft {
+  text-align: left;
+}
+.MuiTypography-alignCenter {
+  text-align: center;
+}
+.MuiTypography-alignRight {
+  text-align: right;
+}
+.MuiTypography-alignJustify {
+  text-align: justify;
+}
+.MuiTypography-noWrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.MuiTypography-gutterBottom {
+  margin-bottom: 0.35em;
+}
+.MuiTypography-paragraph {
+  margin-bottom: 16px;
+}
+.MuiTypography-colorInherit {
+  color: inherit;
+}
+.MuiTypography-colorPrimary {
+  color: #d9d900;
+}
+.MuiTypography-colorSecondary {
+  color: #242415;
+}
+.MuiTypography-colorTextPrimary {
+  color: #242415;
+}
+.MuiTypography-colorTextSecondary {
+  color: #a8a8a8;
+}
+.MuiTypography-colorError {
+  color: #f03738;
+}
+.MuiTypography-displayInline {
+  display: inline;
+}
+.MuiTypography-displayBlock {
+  display: block;
+}
+</style><style data-jss="" data-meta="MuiSvgIcon">
+.MuiSvgIcon-root {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  -moz-user-select: none;
+}
+.MuiSvgIcon-colorPrimary {
+  color: #d9d900;
+}
+.MuiSvgIcon-colorSecondary {
+  color: #242415;
+}
+.MuiSvgIcon-colorAction {
+  color: rgba(0, 0, 0, 0.54);
+}
+.MuiSvgIcon-colorError {
+  color: #f03738;
+}
+.MuiSvgIcon-colorDisabled {
+  color: rgba(0, 0, 0, 0.26);
+}
+.MuiSvgIcon-fontSizeInherit {
+  font-size: inherit;
+}
+.MuiSvgIcon-fontSizeSmall {
+  font-size: 1.25rem;
+}
+.MuiSvgIcon-fontSizeLarge {
+  font-size: 2.1875rem;
+}
+</style><style data-jss="" data-meta="MuiTouchRipple">
+.MuiTouchRipple-root {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.MuiTouchRipple-ripple {
+  opacity: 0;
+  position: absolute;
+}
+.MuiTouchRipple-rippleVisible {
+  opacity: 0.3;
+  animation: MuiTouchRipple-keyframes-enter 550ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+}
+.MuiTouchRipple-ripplePulsate {
+  animation-duration: 200ms;
+}
+.MuiTouchRipple-child {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 1;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+.MuiTouchRipple-childLeaving {
+  opacity: 0;
+  animation: MuiTouchRipple-keyframes-exit 550ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.MuiTouchRipple-childPulsate {
+  top: 0;
+  left: 0;
+  position: absolute;
+  animation: MuiTouchRipple-keyframes-pulsate 2500ms cubic-bezier(0.4, 0, 0.2, 1) 200ms infinite;
+}
+@-moz-keyframes MuiTouchRipple-keyframes-enter {
+  0% {
+    opacity: 0.1;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}
+@-moz-keyframes MuiTouchRipple-keyframes-exit {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-moz-keyframes MuiTouchRipple-keyframes-pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style><style data-jss="" data-meta="MuiButtonBase">
+.MuiButtonBase-root {
+  color: inherit;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  display: inline-flex;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  align-items: center;
+  border-radius: 0;
+  vertical-align: middle;
+  -moz-appearance: none;
+  justify-content: center;
+  text-decoration: none;
+  -moz-user-select: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.MuiButtonBase-root::-moz-focus-inner {
+  border-style: none;
+}
+.MuiButtonBase-root.Mui-disabled {
+  cursor: default;
+  pointer-events: none;
+}
+</style><style data-jss="" data-meta="MuiBreadcrumbs">
+.MuiBreadcrumbs-ol {
+  margin: 0;
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+  list-style: none;
+  align-items: center;
+}
+.MuiBreadcrumbs-separator {
+  display: flex;
+  margin-left: 8px;
+  margin-right: 8px;
+  -moz-user-select: none;
+}
+</style><style data-jss="" data-meta="MuiCssBaseline">
+html {
+  box-sizing: border-box;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+strong, b {
+  font-weight: 700;
+}
+body {
+  color: #242415;
+  margin: 0;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.57;
+  font-stretch: normal;
+  letter-spacing: -0.25px;
+  background-color: #fdfdfd;
+}
+@media print {
+  body {
+    background-color: #fff;
+  }
+}
+body::backdrop {
+  background-color: #fdfdfd;
+}
+</style><style data-jss="" data-meta="MuiLink">
+.MuiLink-root {
+  color: #4192ae;
+}
+.MuiLink-underlineNone {
+  text-decoration: none;
+}
+.MuiLink-underlineHover {
+  text-decoration: none;
+}
+.MuiLink-underlineHover:hover {
+  text-decoration: underline;
+}
+.MuiLink-underlineAlways {
+  text-decoration: underline;
+}
+.MuiLink-button {
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  position: relative;
+  border-radius: 0;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -moz-user-select: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.MuiLink-button::-moz-focus-inner {
+  border-style: none;
+}
+.MuiLink-button.Mui-focusVisible {
+  outline: auto;
+}
+</style><style data-jss="" data-meta="MuiPaper">
+.MuiPaper-root {
+  color: #242415;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #f7f7f5;
+}
+.MuiPaper-rounded {
+  border-radius: 4px;
+}
+.MuiPaper-outlined {
+  border: 1px solid #efefec;
+}
+.MuiPaper-elevation0 {
+  box-shadow: none;
+}
+.MuiPaper-elevation1 {
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation2 {
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation3 {
+  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation4 {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation5 {
+  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation6 {
+  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation7 {
+  box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation8 {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation9 {
+  box-shadow: 0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation10 {
+  box-shadow: 0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation11 {
+  box-shadow: 0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation12 {
+  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation13 {
+  box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation14 {
+  box-shadow: 0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation15 {
+  box-shadow: 0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation16 {
+  box-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation17 {
+  box-shadow: 0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation18 {
+  box-shadow: 0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation19 {
+  box-shadow: 0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation20 {
+  box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation21 {
+  box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation22 {
+  box-shadow: 0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation23 {
+  box-shadow: 0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12);
+}
+.MuiPaper-elevation24 {
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
+}
+</style><style data-jss="" data-meta="MuiAppBar">
+.MuiAppBar-root {
+  width: 100%;
+  display: flex;
+  z-index: 1100;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  flex-direction: column;
+}
+.MuiAppBar-positionFixed {
+  top: 0;
+  left: auto;
+  right: 0;
+  position: fixed;
+}
+@media print {
+  .MuiAppBar-positionFixed {
+    position: absolute;
+  }
+}
+.MuiAppBar-positionAbsolute {
+  top: 0;
+  left: auto;
+  right: 0;
+  position: absolute;
+}
+.MuiAppBar-positionSticky {
+  top: 0;
+  left: auto;
+  right: 0;
+  position: sticky;
+}
+.MuiAppBar-positionStatic {
+  position: static;
+  transform: translateZ(0);
+}
+.MuiAppBar-positionRelative {
+  position: relative;
+}
+.MuiAppBar-colorDefault {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #f7f7f5;
+}
+.MuiAppBar-colorPrimary {
+  color: #242415;
+  background-color: #d9d900;
+}
+.MuiAppBar-colorSecondary {
+  color: #F7F7F5;
+  background-color: #242415;
+}
+.MuiAppBar-colorInherit {
+  color: inherit;
+}
+.MuiAppBar-colorTransparent {
+  color: inherit;
+  background-color: transparent;
+}
+</style><style data-jss="" data-meta="MuiAvatar">
+.MuiAvatar-root {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.25rem;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1;
+  border-radius: 50%;
+  justify-content: center;
+  -moz-user-select: none;
+}
+.MuiAvatar-colorDefault {
+  color: #fdfdfd;
+  background-color: #cacaca;
+}
+.MuiAvatar-rounded {
+  border-radius: 4px;
+}
+.MuiAvatar-square {
+  border-radius: 0;
+}
+.MuiAvatar-img {
+  color: transparent;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  text-align: center;
+  text-indent: 10000px;
+}
+.MuiAvatar-fallback {
+  width: 75%;
+  height: 75%;
+}
+</style><style data-jss="" data-meta="MuiButton">
+.MuiButton-root {
+  color: #242415;
+  width: 107px;
+  height: 40px;
+  padding: 6px 16px;
+  font-size: 1rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  font-style: normal;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  font-stretch: normal;
+  border-radius: 4px;
+  letter-spacing: 1.25px;
+  text-transform: capitalize;
+}
+.MuiButton-root:hover {
+  text-decoration: none;
+  background-color: rgba(36, 36, 21, 0.04);
+}
+.MuiButton-root.Mui-disabled {
+  color: rgba(0, 0, 0, 0.26);
+}
+@media (hover: none) {
+  .MuiButton-root:hover {
+    background-color: transparent;
+  }
+}
+.MuiButton-root:hover.Mui-disabled {
+  background-color: transparent;
+}
+.MuiButton-label {
+  width: 100%;
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+}
+.MuiButton-text {
+  padding: 6px 8px;
+}
+.MuiButton-textPrimary {
+  color: #d9d900;
+}
+.MuiButton-textPrimary:hover {
+  color: #AEAE00;
+  background-color: rgba(217, 217, 0, 0.04);
+}
+@media (hover: none) {
+  .MuiButton-textPrimary:hover {
+    background-color: transparent;
+  }
+}
+.MuiButton-textSecondary {
+  color: #242415;
+}
+.MuiButton-textSecondary:hover {
+  background-color: rgba(36, 36, 21, 0.04);
+}
+@media (hover: none) {
+  .MuiButton-textSecondary:hover {
+    background-color: transparent;
+  }
+}
+.MuiButton-outlined {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  padding: 5px 15px;
+}
+.MuiButton-outlined.Mui-disabled {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.MuiButton-outlinedPrimary {
+  color: #d9d900;
+  border: 1px solid rgba(217, 217, 0, 0.5);
+  box-shadow: inset 0px -1px 2px rgba(36, 36, 21, 0.12);
+}
+.MuiButton-outlinedPrimary:hover {
+  color: #AEAE00;
+  border: 1px solid #d9d900;
+  border-color: #AEAE00;
+  background-color: rgba(217, 217, 0, 0.04);
+}
+@media (hover: none) {
+  .MuiButton-outlinedPrimary:hover {
+    background-color: transparent;
+  }
+}
+.MuiButton-outlinedSecondary {
+  color: #242415;
+  border: 1px solid rgba(36, 36, 21, 0.5);
+}
+.MuiButton-outlinedSecondary:hover {
+  border: 1px solid #242415;
+  background-color: rgba(36, 36, 21, 0.04);
+}
+.MuiButton-outlinedSecondary.Mui-disabled {
+  border: 1px solid rgba(0, 0, 0, 0.26);
+}
+@media (hover: none) {
+  .MuiButton-outlinedSecondary:hover {
+    background-color: transparent;
+  }
+}
+.MuiButton-contained {
+  color: rgba(0, 0, 0, 0.87);
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  background-color: #dfdfdd;
+}
+.MuiButton-contained:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+  background-color: #d5d5d5;
+}
+.MuiButton-contained.Mui-focusVisible {
+  box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
+}
+.MuiButton-contained:active {
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+.MuiButton-contained.Mui-disabled {
+  color: rgba(0, 0, 0, 0.26);
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+@media (hover: none) {
+  .MuiButton-contained:hover {
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+    background-color: #dfdfdd;
+  }
+}
+.MuiButton-contained:hover.Mui-disabled {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+.MuiButton-containedPrimary {
+  color: #242415;
+  box-shadow: 0px 1px 2px rgba(36, 36, 21, 0.25);
+  background-color: #d9d900;
+}
+.MuiButton-containedPrimary:hover {
+  background-color: #AEAE00;
+}
+@media (hover: none) {
+  .MuiButton-containedPrimary:hover {
+    background-color: #d9d900;
+  }
+}
+.MuiButton-containedSecondary {
+  color: #F7F7F5;
+  background-color: #242415;
+}
+.MuiButton-containedSecondary:hover {
+  background-color: #070704;
+}
+@media (hover: none) {
+  .MuiButton-containedSecondary:hover {
+    background-color: #242415;
+  }
+}
+.MuiButton-disableElevation {
+  box-shadow: none;
+}
+.MuiButton-disableElevation:hover {
+  box-shadow: none;
+}
+.MuiButton-disableElevation.Mui-focusVisible {
+  box-shadow: none;
+}
+.MuiButton-disableElevation:active {
+  box-shadow: none;
+}
+.MuiButton-disableElevation.Mui-disabled {
+  box-shadow: none;
+}
+.MuiButton-colorInherit {
+  color: inherit;
+  border-color: currentColor;
+}
+.MuiButton-textSizeSmall {
+  padding: 4px 5px;
+  font-size: 0.8125rem;
+}
+.MuiButton-textSizeLarge {
+  padding: 8px 11px;
+  font-size: 0.9375rem;
+}
+.MuiButton-outlinedSizeSmall {
+  padding: 3px 9px;
+  font-size: 0.8125rem;
+}
+.MuiButton-outlinedSizeLarge {
+  padding: 7px 21px;
+  font-size: 0.9375rem;
+}
+.MuiButton-containedSizeSmall {
+  padding: 4px 10px;
+  font-size: 0.8125rem;
+}
+.MuiButton-containedSizeLarge {
+  padding: 8px 22px;
+  font-size: 0.9375rem;
+}
+.MuiButton-fullWidth {
+  width: 100%;
+}
+.MuiButton-startIcon {
+  display: inherit;
+  margin-left: -4px;
+  margin-right: 8px;
+}
+.MuiButton-startIcon.MuiButton-iconSizeSmall {
+  margin-left: -2px;
+}
+.MuiButton-endIcon {
+  display: inherit;
+  margin-left: 8px;
+  margin-right: -4px;
+}
+.MuiButton-endIcon.MuiButton-iconSizeSmall {
+  margin-right: -2px;
+}
+.MuiButton-iconSizeSmall > *:first-child {
+  font-size: 18px;
+}
+.MuiButton-iconSizeMedium > *:first-child {
+  font-size: 20px;
+}
+.MuiButton-iconSizeLarge > *:first-child {
+  font-size: 22px;
+}
+</style><style data-jss="" data-meta="MuiInputBase">
+@-moz-keyframes mui-auto-fill {}
+@-moz-keyframes mui-auto-fill-cancel {}
+.MuiInputBase-root {
+  color: #242415;
+  cursor: text;
+  display: inline-flex;
+  position: relative;
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-style: normal;
+  align-items: center;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.1876em;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+.MuiInputBase-root.Mui-disabled {
+  color: #dfdfdd;
+  cursor: default;
+}
+.MuiInputBase-multiline {
+  padding: 6px 0 7px;
+}
+.MuiInputBase-multiline.MuiInputBase-marginDense {
+  padding-top: 3px;
+}
+.MuiInputBase-fullWidth {
+  width: 100%;
+}
+.MuiInputBase-input {
+  font: inherit;
+  color: currentColor;
+  width: 100%;
+  border: 0;
+  height: 1.1876em;
+  margin: 0;
+  display: block;
+  padding: 6px 0 7px;
+  min-width: 0;
+  background: none;
+  box-sizing: content-box;
+  animation-name: mui-auto-fill-cancel;
+  -webkit-tap-highlight-color: transparent;
+}
+.MuiInputBase-input::-webkit-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiInputBase-input::-moz-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiInputBase-input:-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiInputBase-input::-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiInputBase-input:focus {
+  outline: 0;
+}
+.MuiInputBase-input:invalid {
+  box-shadow: none;
+}
+.MuiInputBase-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+.MuiInputBase-input.Mui-disabled {
+  opacity: 1;
+}
+.MuiInputBase-input:-webkit-autofill {
+  animation-name: mui-auto-fill;
+  animation-duration: 5000s;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input::-webkit-input-placeholder {
+  opacity: 0 !important;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input::-moz-placeholder {
+  opacity: 0 !important;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input:-ms-input-placeholder {
+  opacity: 0 !important;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input::-ms-input-placeholder {
+  opacity: 0 !important;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input:focus::-webkit-input-placeholder {
+  opacity: 0.42;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input:focus::-moz-placeholder {
+  opacity: 0.42;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input:focus:-ms-input-placeholder {
+  opacity: 0.42;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input:focus::-ms-input-placeholder {
+  opacity: 0.42;
+}
+.MuiInputBase-inputMarginDense {
+  padding-top: 3px;
+}
+.MuiInputBase-inputMultiline {
+  height: auto;
+  resize: none;
+  padding: 0;
+}
+.MuiInputBase-inputTypeSearch {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+}
+</style><style data-jss="" data-meta="MuiFormControl">
+.MuiFormControl-root {
+  border: 0;
+  margin: 0;
+  display: inline-flex;
+  padding: 0;
+  position: relative;
+  min-width: 0;
+  flex-direction: column;
+  vertical-align: top;
+}
+.MuiFormControl-marginNormal {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.MuiFormControl-marginDense {
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+.MuiFormControl-fullWidth {
+  width: 100%;
+}
+</style><style data-jss="" data-meta="MuiFormLabel">
+.MuiFormLabel-root {
+  color: #a8a8a8;
+  padding: 0;
+  font-size: 1rem;
+  font-style: normal;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+.MuiFormLabel-root.Mui-focused {
+  color: #d9d900;
+}
+.MuiFormLabel-root.Mui-disabled {
+  color: #dfdfdd;
+}
+.MuiFormLabel-root.Mui-error {
+  color: #f03738;
+}
+.MuiFormLabel-colorSecondary.Mui-focused {
+  color: #242415;
+}
+.MuiFormLabel-asterisk.Mui-error {
+  color: #f03738;
+}
+</style><style data-jss="" data-meta="MuiInput">
+.MuiInput-root {
+  position: relative;
+}
+label + .MuiInput-formControl {
+  margin-top: 16px;
+}
+.MuiInput-colorSecondary.MuiInput-underline:after {
+  border-bottom-color: #242415;
+}
+.MuiInput-underline:after {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  border-bottom: 2px solid #d9d900;
+  pointer-events: none;
+}
+.MuiInput-underline.Mui-focused:after {
+  transform: scaleX(1);
+}
+.MuiInput-underline.Mui-error:after {
+  transform: scaleX(1);
+  border-bottom-color: #f03738;
+}
+.MuiInput-underline:before {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "\00a0";
+  position: absolute;
+  transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  pointer-events: none;
+}
+.MuiInput-underline:hover:not(.Mui-disabled):before {
+  border-bottom: 2px solid #242415;
+}
+.MuiInput-underline.Mui-disabled:before {
+  border-bottom-style: dotted;
+}
+@media (hover: none) {
+  .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  }
+}
+</style><style data-jss="" data-meta="MuiInputLabel">
+.MuiInputLabel-root {
+  display: block;
+  transform-origin: top left;
+}
+.MuiInputLabel-formControl {
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform: translate(0, 24px) scale(1);
+}
+.MuiInputLabel-marginDense {
+  transform: translate(0, 21px) scale(1);
+}
+.MuiInputLabel-shrink {
+  transform: translate(0, 1.5px) scale(0.75);
+  transform-origin: top left;
+}
+.MuiInputLabel-animated {
+  transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+}
+.MuiInputLabel-filled {
+  z-index: 1;
+  transform: translate(12px, 20px) scale(1);
+  pointer-events: none;
+}
+.MuiInputLabel-filled.MuiInputLabel-marginDense {
+  transform: translate(12px, 17px) scale(1);
+}
+.MuiInputLabel-filled.MuiInputLabel-shrink {
+  transform: translate(12px, 10px) scale(0.75);
+}
+.MuiInputLabel-filled.MuiInputLabel-shrink.MuiInputLabel-marginDense {
+  transform: translate(12px, 7px) scale(0.75);
+}
+.MuiInputLabel-outlined {
+  z-index: 1;
+  transform: translate(14px, 20px) scale(1);
+  pointer-events: none;
+}
+.MuiInputLabel-outlined.MuiInputLabel-marginDense {
+  transform: translate(14px, 12px) scale(1);
+}
+.MuiInputLabel-outlined.MuiInputLabel-shrink {
+  transform: translate(14px, -6px) scale(0.75);
+}
+</style><style data-jss="" data-meta="MuiSnackbar">
+.MuiSnackbar-root {
+  left: 8px;
+  right: 8px;
+  display: flex;
+  z-index: 1400;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+}
+.MuiSnackbar-anchorOriginTopCenter {
+  top: 8px;
+}
+@media (min-width:600px) {
+  .MuiSnackbar-anchorOriginTopCenter {
+    top: 24px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+.MuiSnackbar-anchorOriginBottomCenter {
+  bottom: 8px;
+}
+@media (min-width:600px) {
+  .MuiSnackbar-anchorOriginBottomCenter {
+    left: 50%;
+    right: auto;
+    bottom: 24px;
+    transform: translateX(-50%);
+  }
+}
+.MuiSnackbar-anchorOriginTopRight {
+  top: 8px;
+  justify-content: flex-end;
+}
+@media (min-width:600px) {
+  .MuiSnackbar-anchorOriginTopRight {
+    top: 24px;
+    left: auto;
+    right: 24px;
+  }
+}
+.MuiSnackbar-anchorOriginBottomRight {
+  bottom: 8px;
+  justify-content: flex-end;
+}
+@media (min-width:600px) {
+  .MuiSnackbar-anchorOriginBottomRight {
+    left: auto;
+    right: 24px;
+    bottom: 24px;
+  }
+}
+.MuiSnackbar-anchorOriginTopLeft {
+  top: 8px;
+  justify-content: flex-start;
+}
+@media (min-width:600px) {
+  .MuiSnackbar-anchorOriginTopLeft {
+    top: 24px;
+    left: 24px;
+    right: auto;
+  }
+}
+.MuiSnackbar-anchorOriginBottomLeft {
+  bottom: 8px;
+  justify-content: flex-start;
+}
+@media (min-width:600px) {
+  .MuiSnackbar-anchorOriginBottomLeft {
+    left: 24px;
+    right: auto;
+    bottom: 24px;
+  }
+}
+</style><style data-jss="" data-meta="MuiToolbar">
+.MuiToolbar-root {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.MuiToolbar-gutters {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width:600px) {
+  .MuiToolbar-gutters {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+.MuiToolbar-regular {
+  min-height: 56px;
+}
+@media (min-width:0px) and (orientation: landscape) {
+  .MuiToolbar-regular {
+    min-height: 48px;
+  }
+}
+@media (min-width:600px) {
+  .MuiToolbar-regular {
+    min-height: 64px;
+  }
+}
+.MuiToolbar-dense {
+  min-height: 48px;
+}
+</style><style data-jss="" data-meta="MuiTextField">
+
+</style>
+    <meta charset="utf-8">
+    <title>Campus Lemoncode</title>
+    <link rel="icon" href="https://campus.lemoncode.net/assets/favicon-Cltur5Ha.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="module" crossorigin="" src="Enunciado%20L2A_files/index-BzZ-d2vE.js"></script>
+    <link rel="stylesheet" crossorigin="" href="Enunciado%20L2A_files/index-CB3fp1d1.css">
+  <style data-emotion="css" data-s=""></style><style data-emotion="css"></style></head>
+  <body style="">
+    <div id="root"><div class="css-1cg5n7c"><header class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorInherit css-qq62d5 mui-fixed MuiPaper-elevation0"><div class="MuiToolbar-root MuiToolbar-regular css-um442s MuiToolbar-gutters"><svg class="MuiSvgIcon-root css-e0dnmk" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg><div class="css-w98boq"><svg class="css-2746za" viewBox="0 0 306 110" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.95101 77H0V109H21V104.172H4.95101V77Z" fill="#D9D900"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M32.0215 94.7929H47.6096V90.0427H32.0215V80.8972H47.9468V76H27V109H48V104.068H32.0215V94.7929Z" fill="#D9D900"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M60.8451 86.4961L69.7177 98.9115H72.4888L81.2324 86.4961V109H86V77H82.1876L71.1291 92.5664L59.9329 77H56V109H60.8451V86.4961Z" fill="#D9D900"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M94 92.9915C94 97.6727 95.9599 101.878 98.9817 104.962C102.029 108.097 106.295 110 110.94 110C115.654 110 119.919 108.097 123.027 104.962C126.04 101.878 128 97.6727 128 92.9915C128 88.3103 126.04 84.1049 123.027 81.021C119.919 77.9285 115.654 76 110.94 76C106.295 76 102.029 77.9285 98.9817 81.021C95.9599 84.1049 94 88.3103 94 92.9915ZM123.122 92.9915C123.122 96.3983 121.732 99.3803 119.582 101.547C117.329 103.773 114.22 105.149 110.94 105.149C107.667 105.149 104.637 103.773 102.453 101.547C100.268 99.3803 98.8867 96.3473 98.8867 92.9915C98.8867 89.6357 100.268 86.6112 102.453 84.4363C104.637 82.2104 107.667 80.8341 110.94 80.8341C114.22 80.8341 117.329 82.2104 119.582 84.4363C121.732 86.6112 123.122 89.5932 123.122 92.9915Z" fill="#D9D900"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M140.866 109V86.7048L157.151 109H161V77.0429H156.186V99.5615L139.763 77.0429L136 77V109H140.866Z" fill="#D9D900"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M169 93.0429C169 97.7027 170.905 101.933 173.753 105.006C176.653 108.078 180.745 110 185.266 110C193.013 110 199.104 104.817 201 97.1706H196.299C194.583 102.268 190.302 105.203 185.266 105.203C182.075 105.203 179.175 103.804 177.081 101.599C174.988 99.3847 173.658 96.4069 173.658 93.0429C173.658 89.5846 174.988 86.5982 177.081 84.3927C179.175 82.1787 182.075 80.7885 185.266 80.7885C190.165 80.7885 194.248 83.3372 196.007 88.3831H200.768C198.864 80.7885 192.867 76 185.266 76C180.745 76 176.653 77.948 173.753 80.9773C170.905 84.0581 169 88.2802 169 93.0429Z" fill="#242415"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M208 92.9915C208 97.6727 209.96 101.878 212.973 104.962C216.021 108.097 220.286 110 224.931 110C229.654 110 233.91 108.097 237.018 104.962C240.031 101.878 242 97.6727 242 92.9915C242 88.3103 240.031 84.1049 237.018 81.021C233.91 77.9285 229.654 76 224.931 76C220.286 76 216.021 77.9285 212.973 81.021C209.96 84.1049 208 88.3103 208 92.9915ZM237.113 92.9915C237.113 96.3983 235.732 99.3803 233.573 101.547C231.329 103.773 228.212 105.149 224.931 105.149C221.667 105.149 218.628 103.773 216.453 101.547C214.268 99.3803 212.878 96.3473 212.878 92.9915C212.878 89.6357 214.268 86.6112 216.453 84.4363C218.628 82.2104 221.667 80.8341 224.931 80.8341C228.212 80.8341 231.329 82.2104 233.573 84.4363C235.732 86.6112 237.113 89.5932 237.113 92.9915Z" fill="#242415"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M250 76V110H261.71C272.498 110 278 101.584 278 93.1236C278 84.6634 272.498 76 261.71 76H250ZM254.829 105.116V80.9984H261.71C269.299 80.9984 273.214 87.1273 273.214 93.1236C273.214 99.12 269.299 105.116 261.71 105.116H254.829Z" fill="#242415"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M290.782 94.7929H305.628V90.0427H290.782V80.8972H305.949V76H286V109H306V104.068H290.782V94.7929Z" fill="#242415"></path><path d="M111 6V8.489H108.541C107.128 8.489 106.422 10.5718 106.422 14.7547V23.2934C106.422 26.3096 105.982 28.6257 105.118 30.285C104.262 31.9184 103.465 32.9987 102.708 33.4914V33.6124C103.506 34.2346 104.312 35.3581 105.159 36.9656C105.998 38.5644 106.422 40.8719 106.422 43.8708V52.3404C106.422 56.4628 107.128 58.5196 108.541 58.5196H111V61H107.801C105.134 61 103.789 58.5196 103.789 53.5503V44.9857C103.789 38.2014 102.534 34.7877 100 34.7877V32.3074C102.534 32.3074 103.789 28.9368 103.789 22.1871V13.5361C103.789 8.51493 105.35 6 108.458 6H111Z" fill="#242415"></path><path d="M196 6V8.48036H198.459C199.872 8.48036 200.578 10.5632 200.578 14.7461V23.2847C200.578 26.3096 201.018 28.6257 201.882 30.285C202.738 31.9184 203.535 32.9901 204.292 33.4827V33.6037C203.494 34.2346 202.688 35.3495 201.841 36.9569C201.002 38.5558 200.578 40.8719 200.578 43.8708V52.3404C200.578 56.4628 199.872 58.5196 198.459 58.5196H196V61H199.199C201.866 61 203.211 58.5196 203.211 53.5503V44.9857C203.211 38.1928 204.466 34.7877 207 34.7877V32.3074C204.466 32.3074 203.211 28.9282 203.211 22.1871V13.5361C203.211 8.51493 201.65 6 198.542 6H196Z" fill="#242415"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M164.862 36.3729C162.238 35.6536 159.362 35.1769 156.729 34.4576C156.487 34.7003 156.487 34.215 156.487 34.9343C156.487 35.4109 164.387 45.2213 168.454 50.0138C168.696 50.4905 169.412 50.7245 169.887 50.7245C171.804 50.7245 177.304 43.306 177.304 41.8761C177.304 38.2882 172.046 38.2882 170.604 37.8029C168.696 37.3262 166.537 36.8496 164.862 36.3729ZM178.979 33.019C178.979 30.3931 178.029 25.3666 175.154 23.6853L156.971 32.785L175.396 36.3729C178.262 35.8963 178.979 35.4109 178.979 33.019ZM169.171 12.2023C168.212 11.483 167.021 10.5297 166.537 10.5297C165.821 10.5297 165.104 11.483 164.862 11.9683C162.238 17.9481 155.771 29.6738 155.771 30.1504C155.771 30.8697 158.162 29.6738 160.796 28.2352C165.104 25.8432 169.887 23.6853 173.954 21.2934C174.196 21.0594 174.196 20.8167 174.196 20.0974C174.196 17.7055 172.279 15.0709 169.171 12.2023ZM154.579 36.0089H153.863V45.8193C153.863 46.3046 154.104 53.0037 154.821 56.349C155.063 57.0683 157.454 58.0303 158.413 58.0303C160.321 58.0303 166.063 55.8723 166.063 52.7611C166.063 52.0418 165.588 50.6118 164.871 49.8925C161.521 45.3426 158.888 40.0821 154.579 36.0089ZM152.3 55.751L152.067 36.1303C151.35 36.3729 151.108 36.3729 150.867 36.6069C147.517 40.9141 143.925 45.2213 140.342 49.5285C139.625 50.4905 138.425 52.1631 138.425 52.6398C138.425 56.2277 148 58.6283 149.675 58.6283C151.108 58.6283 152.3 57.4236 152.3 55.751ZM149.312 33.9117C148.354 33.9117 146.921 33.669 146.204 33.669L135.671 34.631H131.846C130.171 34.631 128.738 35.1076 128.738 37.4995C128.738 38.6955 131.129 49.4679 135.671 49.4679C136.154 49.4679 136.396 49.4679 136.629 49.2252C139.979 45.3946 143.087 41.3301 146.437 37.9762C147.396 36.7802 149.554 35.1076 149.554 34.3883C149.554 33.9117 149.554 34.1456 149.312 33.9117ZM149.502 32.7157C149.744 32.733 149.96 32.7417 150.176 32.655C150.029 32.6984 149.865 32.7157 149.675 32.7157H149.502ZM135.559 18.3641C134.833 17.8875 133.884 17.8875 133.158 17.8875C130.534 20.756 129.092 25.7826 129.092 29.1278C129.092 32.4817 132.683 32.239 135.317 32.239C136.033 32.239 139.625 32.005 141.533 31.7624H150.15V31.0431C145.367 26.9785 140.342 22.4287 135.559 18.3641ZM151.462 29.1538C150.029 22.212 150.271 15.9895 147.163 9.29039C145.721 9.29039 144.046 9.29039 143.087 10.0097C142.138 10.4864 136.154 13.5976 136.154 15.7555C136.154 16.4748 147.163 26.5192 151.229 29.8731C151.704 29.3878 151.462 29.1538 151.462 29.1538ZM161.633 8.49308C158.767 7.77377 153.5 7.53977 153.025 7.53977C152.3 7.53977 151.583 7.53978 151.35 7.77377C150.625 8.01643 150.392 8.73574 150.392 9.21239L153.742 28.8331C155.65 27.3945 157.092 23.0873 158.525 20.4614C158.767 19.7421 163.075 12.3236 163.075 10.4084C163.075 9.68904 163.075 9.68904 162.833 9.45505C162.592 8.96973 162.117 8.49308 161.633 8.49308ZM153.5 0C134.997 0 120 15.0016 120 33.4957C120 51.9985 134.997 67 153.5 67C172.003 67 187 51.9985 187 33.4957C187 15.0016 172.003 0 153.5 0ZM183.426 41.1134C182.925 42.7254 182.338 44.32 181.707 45.88C181.12 47.3273 180.421 48.6965 179.385 49.8752C178.375 51.0278 177.14 51.9551 175.957 52.9258C174.705 53.9571 174.066 55.5517 172.935 56.7216C171.873 57.8223 170.285 58.3943 168.972 59.2089C167.703 59.9889 166.563 61.0288 165.147 61.5055C162.246 62.4848 159.19 63.5161 156.177 64.0621C153.077 64.6254 149.425 63.7761 146.316 63.4208C143.286 63.0828 140.411 61.8522 137.786 60.2575C134.704 58.3769 131.552 56.193 129.394 53.2464C127.399 50.5165 126.061 47.3273 124.766 44.2507C124.136 42.7514 123.773 41.1741 123.566 39.5622C123.341 37.8289 122.677 36.5636 122.4 34.8476C121.58 29.7691 122.858 25.3579 124.904 20.6001C125.526 19.1614 126.13 17.6968 126.899 16.3275C127.658 14.9842 128.608 13.7796 129.782 12.7743C130.957 11.769 132.26 10.937 133.443 9.94904C134.635 8.94373 135.61 7.7131 136.793 6.69913C137.959 5.71116 139.297 5.09585 140.765 4.69719C142.31 4.27254 143.908 4.04721 145.436 3.57056C147.024 3.06791 148.561 2.40926 150.176 2.01061C153.5 1.1873 156.936 1.71595 160.191 2.58259C163.455 3.44056 166.701 4.4892 169.602 6.25715C171.053 7.14112 172.417 8.15509 173.764 9.17773C180.36 14.1782 182.778 22.9486 184.004 30.8264C184.548 34.3016 184.462 37.7422 183.426 41.1134Z" fill="#D9D900"></path></svg><span class="MuiTypography-root MuiTypography-caption">Campus</span></div><div class="css-1u2em1v"><p class="MuiTypography-root css-1rvm8u0 MuiTypography-body2">Víctor</p><div class="MuiAvatar-root MuiAvatar-circle css-15e3lqz MuiAvatar-colorDefault" aria-label="Menu"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></div></div></div><nav class="MuiTypography-root MuiBreadcrumbs-root css-pg7hyy MuiTypography-body1 MuiTypography-colorTextSecondary" aria-label="breadcrumbs"><ol class="MuiBreadcrumbs-ol"><li class="MuiBreadcrumbs-li"><a class="css-ref2s3" color="inherit" href="#/training-list">Listado de cursos</a></li><li aria-hidden="true" class="MuiBreadcrumbs-separator"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></li><li class="MuiBreadcrumbs-li"><a class="css-ref2s3" color="inherit" href="#/training/65dde32624376d12d559f6c1/dashboard">Bootcamp Back Nodejs New Edition</a></li><li aria-hidden="true" class="MuiBreadcrumbs-separator"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></li><li class="MuiBreadcrumbs-li"><a class="css-ref2s3" color="inherit" href="#/training/65dde32624376d12d559f6c1/delivery-list">Entregas</a></li><li aria-hidden="true" class="MuiBreadcrumbs-separator"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg></li><li class="MuiBreadcrumbs-li"><p class="MuiTypography-root css-1di23ku MuiTypography-body2">Ejercicio</p></li></ol></nav></header><main class="css-aspzi"><div class="css-1fttcpj"><h2 class="MuiTypography-root MuiTypography-h4">Bootcamp Back Nodejs New Edition - Laboratorio Módulo 2 A - Modelado Relacional</h2><div class="css-1h9bq9d"><div class="markdown-body"><h1>Introducción</h1>
+<p>Vamos a simular que tenemos que modelar la base de datos de un portal
+ en el que se exponen videos técnicos,que se encuentran categorizados 
+por temática, autor, ...</p>
+<h1>Enunciado</h1>
+<p>Una startup tecnológica va a desarrollar un portal de ELearning y nos
+ ha pedido que realizemos el modelo de datos de dicho sistema.</p>
+<p>A tener en cuenta:</p>
+<ul>
+<li>Va a ser un portal orientado al mundo de la programación.</li>
+<li>El portal va a estar compuesto por cursos, cada curso está compuesto
+ a su vez por un número de videos y artículos que lo acompañan.</li>
+<li>La página de cursos debe mostrar la lista de autores que lo hicieron.</li>
+<li>La página de un video debe mostrar el autor que lo realizó.</li>
+<li>Los videos y el contenido de cada artículo se almacenan en un 
+storage S3 y en un headless CMS, en la base de datos sólo almacenaremos 
+los Id's a esos recursos.</li>
+<li>Los videos se pueden clasificar por temáticas (Devops / Front End / 
+Back End / ...), para simplificar, un video va a pertenecer a una sóla 
+temática.</li>
+<li>Los videos tienen autores (ponemos la restricción de que un video tiene un autor), un curso puede tener varios autores.</li>
+<li>En principio los vídeos no se van a compartir entre diferentes cursos (aunque sería una amplicacíon interesante del ejercicio).</li>
+<li>Hay una opción para ver la página con la biografía del autor.</li>
+</ul>
+<h2>Aplicación</h2>
+<p>Sitemap de la aplicación:</p>
+<p><img src="Enunciado%20L2A_files/sitemap.png" alt="Mapa del sitio, págias: Home, Curso, Lección y Autor"></p>
+<h3>Mocks de la aplicación</h3>
+<h4>Home</h4>
+<p><img src="Enunciado%20L2A_files/home.png" alt="Home"></p>
+<h4>Cursos</h4>
+<p><img src="Enunciado%20L2A_files/curso.png" alt="Curso"></p>
+<h4>Lección</h4>
+<p><img src="Enunciado%20L2A_files/video.png" alt="Lección"></p>
+<h4>Autor</h4>
+<p><img src="Enunciado%20L2A_files/autor.png" alt="Autor">
+​</p>
+<h2>Parte obligatoria</h2>
+<p>Generar el modelo de entidad relación (físico), pero si quieres puedes generar también el de Chen para subir nota.</p>
+<h2>Parte opcional</h2>
+<ul>
+<li>Tener un sólo nivel de áreas es limitado, lo suyo sería tener una estructura jerárquica, por ejemplo:
+<ul>
+<li>Front End &gt;&gt; React</li>
+<li>Front End &gt;&gt; React &gt;&gt; Testing</li>
+<li>Front End &gt;&gt; Angular</li>
+<li>Devops &gt;&gt; Docker</li>
+<li>Devops &gt;&gt; Serverless</li>
+<li>Backend &gt;&gt; nodejs</li>
+<li>Backend &gt;&gt; nodejs &gt;&gt; Express</li>
+<li>Backend &gt;&gt; mongo</li>
+</ul>
+</li>
+<li>Van a haber videos publicos y privados, es decir:
+<ul>
+<li>Un curso puede ser 100% publico.</li>
+<li>Un curso puede tener una parte inicial 100% pública, y otra sólo para subscriptores.</li>
+</ul>
+</li>
+</ul>
+<h2>Desafío</h2>
+<ul>
+<li>Podemos tener usuarios subscriptores y usuarios que compren cursos concretos.</li>
+<li>Podríamos añadir una nube de tags en cada curso o video que permitierá hacer busquedas rápidas.</li>
+<li>Conocer el progreso de un alumno en los cursos que está realizando.</li>
+<li>Queremos mostrar al usuario cuantas visualizaciones ha tenido un video.</li>
+<li>Queremos mostrar al usuario cuantas visualizaciones han tenido todos los videos de un curso.</li>
+</ul>
+<h1>Entregable</h1>
+<p>Se tienen que generar los siguientes ficheros:</p>
+<ul>
+<li>Diagrama del modelo de datos.</li>
+<li>Markdown con explicación de por qué se ha realizado dicho modelado, patrones aplicados y razón.</li>
+</ul>
+<p>Create una carpeta para la versión básica y otra para lo opcional 
+(cada carpeta es independiente y contendrá el diagrama y markdown)</p>
+<p>Si tienes dudas sobre como subir esto a Git o como generar un 
+Markdown ponte en contacto con tu mentor que te indicará donde encontrar
+ videos en el campus sobre esto y también te resolverá dudas.</p>
+</div></div><form action="#" class="css-dkaqgh"><div><h3 class="MuiTypography-root MuiTypography-h5">Entrega:</h3><div class="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated" data-shrink="false">Enlaces repositorios</label><div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl MuiInputBase-multiline MuiInput-multiline"><textarea aria-invalid="false" name="repositories" rows="4" class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline MuiInput-inputMultiline"></textarea></div></div></div><button class="MuiButtonBase-root MuiButton-root MuiButton-contained css-1duj7gx MuiButton-containedPrimary" tabindex="0" type="submit"><span class="MuiButton-label">Guardar</span><span class="MuiTouchRipple-root"></span></button></form></div></main><footer class="css-qerdhb"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" target="_blank" href="https://lemoncode.net/" title="Lemoncode"><img src="Enunciado%20L2A_files/logo-lemoncode-Crh2En59.svg" class="css-ydogkh"></a><div class="css-1nsn7i4"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" target="_blank" href="https://twitter.com/lemoncoders" aria-label="Lemoncode Twitter account"><svg class="MuiSvgIcon-root css-gdqnsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"></path></svg></a><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" target="_blank" href="mailto:formacion@lemoncode.net" aria-label="Lemoncode Email"><svg class="MuiSvgIcon-root css-gdqnsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></a><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" target="_blank" href="https://github.com/Lemoncode" aria-label="Lemoncode GitHub account"><svg class="MuiSvgIcon-root css-gdqnsc" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"></path></svg></a></div><span class="MuiTypography-root css-1daw7fb MuiTypography-caption"><p>©&nbsp;<a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorInherit" target="_blank" href="https://lemoncode.net/">Lemoncode&nbsp;</a>2026 - Todos los derechos reservados</p></span></footer></div></div>
+  
+
+</body></html>
