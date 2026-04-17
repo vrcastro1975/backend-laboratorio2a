@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L2A Opcional - Demo relacional</title>
+    <style>
+      :root { --bg:#0f172a; --card:#111827; --card-soft:#1f2937; --text:#e5e7eb; --muted:#9ca3af; --border:#374151; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:Inter,Arial,sans-serif; background:var(--bg); color:var(--text); }
+      .container { max-width:1150px; margin:0 auto; padding:24px; }
+      section { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:16px; }
+      .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
+      .card { background:var(--card-soft); border:1px solid var(--border); border-radius:10px; padding:12px; }
+      .toolbar { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; align-items:center; }
+      button,select,input { background:#111827; color:var(--text); border:1px solid var(--border); border-radius:8px; padding:8px 10px; }
+      button { cursor:pointer; }
+      .muted{color:var(--muted);} .small{font-size:.85rem;} .ok{color:#86efac;} .error{color:#fca5a5;}
+      .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:rgba(56,189,248,.15);color:#7dd3fc;margin:2px 4px 2px 0;}
+      .pill-warn{background:rgba(251,191,36,.18);color:#fcd34d;}
+      .pill-ok{background:rgba(74,222,128,.15);color:#86efac;}
+      ul{padding-left:18px;}
+      table.data { width:100%; border-collapse:collapse; font-size:.9rem; }
+      table.data th, table.data td { border:1px solid var(--border); padding:6px 8px; text-align:left; }
+      table.data th { background:var(--card-soft); }
+      .flex-check { display:flex; align-items:center; gap:8px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Laboratorio 2A - Demo opcional (PostgreSQL)</h1>
+      <p class="muted">Node + TypeScript (servidor HTTP nativo), sin Express. Incluye vistas de jerarquia, acceso, tags, suscripcion/compra, progreso y metricas de visualizacion (datos de ejemplo).</p>
+
+      <section>
+        <h2>Mapa de areas (jerarquia)</h2>
+        <p class="small muted">Rutas tipo <strong>Front End >> React >> Testing</strong> segun <code>arbol_categorias</code>.</p>
+        <div id="arbolCategorias"></div>
+      </section>
+
+      <section>
+        <h2>Nube de tags (cursos y videos)</h2>
+        <p class="small muted">Conteos desde <code>cursos_tags</code> y <code>videos_tags</code>.</p>
+        <div id="tagsNube" class="toolbar" style="margin-bottom:0;"></div>
+      </section>
+
+      <section><h2>Home: ultimos videos por categoria raiz</h2><div id="home" class="grid"></div></section>
+
+      <section>
+        <h2>Cursos por area</h2>
+        <div class="toolbar">
+          <button onclick="loadCursos()">Todos</button>
+          <button onclick="loadCursos('frontend')">Front End</button>
+          <button onclick="loadCursos('backend')">Backend</button>
+          <button onclick="loadCursos('devops')">DevOps</button>
+        </div>
+        <div id="cursos" class="grid"></div>
+      </section>
+
+      <section>
+        <h2>Detalle de curso</h2>
+        <div class="toolbar"><select id="cursoSelect"></select><button onclick="loadCursoDetalle()">Ver curso</button></div>
+        <div id="cursoDetalle"></div>
+      </section>
+
+      <section>
+        <h2>Autores</h2>
+        <div class="toolbar"><select id="autorSelect"></select><button onclick="loadAutorDetalle()">Ver autor</button></div>
+        <div id="autorDetalle"></div>
+      </section>
+
+      <section>
+        <h2>Panel demo por alumno</h2>
+        <p class="small muted">
+          <strong>Alumno Uno</strong> tiene suscripcion activa (ve contenido marcado como <code>subscribers</code> en la plataforma).
+          <strong>Alumno Dos</strong> compro el curso de Backend (acceso por <code>usuarios_cursos</code>). Sin login real: solo datos de ejemplo.
+        </p>
+        <div class="toolbar">
+          <select id="panelUsuarioSelect"></select>
+          <button type="button" onclick="loadPanelDemo()">Cargar panel</button>
+        </div>
+        <div id="panelContenido"></div>
+      </section>
+
+      <section>
+        <h2>CRUD rapido</h2>
+        <div class="card">
+          <h3>Nuevo autor</h3>
+          <div class="toolbar"><input id="nuevoAutorNombre" placeholder="Nombre mostrado" /><input id="nuevoAutorBio" placeholder="Bio corta" /><button onclick="crearAutor()">Crear autor</button></div>
+        </div>
+        <div class="card" style="margin-top:12px;">
+          <h3>Nuevo curso</h3>
+          <div class="toolbar">
+            <input id="nuevoCursoTitulo" placeholder="Titulo" />
+            <input id="nuevoCursoDesc" placeholder="Descripcion corta" />
+            <select id="nuevaCategoriaCurso"></select>
+            <select id="nuevoCursoAutor"></select>
+            <label class="flex-check"><input type="checkbox" id="nuevoCursoPublico" /> Curso publico</label>
+            <button onclick="crearCurso()">Crear curso</button>
+          </div>
+        </div>
+        <div class="card" style="margin-top:12px;">
+          <h3>Editar / eliminar</h3>
+          <div class="toolbar"><select id="editarCursoSelect"></select><input id="editarCursoTitulo" placeholder="Nuevo titulo" /><input id="editarCursoDesc" placeholder="Nueva descripcion" /><button onclick="editarCurso()">Editar curso</button><button onclick="eliminarCurso()">Eliminar curso</button></div>
+          <div class="toolbar"><select id="editarAutorSelect"></select><input id="editarAutorNombre" placeholder="Nuevo nombre" /><input id="editarAutorBio" placeholder="Nueva bio" /><button onclick="editarAutor()">Editar autor</button><button onclick="eliminarAutor()">Eliminar autor</button></div>
+        </div>
+        <p id="msg" class="small muted"></p>
+      </section>
+    </div>
+
+    <script>
+      const $=(id)=>document.getElementById(id);
+      async function request(url, options){ const r=await fetch(url,options); const d=await r.json().catch(()=>({})); if(!r.ok) throw new Error(d.message||`Error ${r.status}`); return d; }
+
+      function esc(s){ return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+      function renderArbol(rows){
+        if(!rows.length){ $('arbolCategorias').innerHTML='<p class="muted">Sin datos.</p>'; return; }
+        const head='<table class="data"><thead><tr><th>Ruta legible</th><th>Slug hoja</th><th>Prof.</th><th>rutaSlug</th></tr></thead><tbody>';
+        const body=rows.map(r=>`<tr><td>${esc(r.rutaLegible)}</td><td>${esc(r.slug)}</td><td>${esc(r.profundidad)}</td><td class="small muted">${esc(r.rutaSlug||'-')}</td></tr>`).join('');
+        $('arbolCategorias').innerHTML=head+body+'</tbody></table>';
+      }
+      function renderTagsNube(rows){
+        $('tagsNube').innerHTML=rows.length?rows.map(t=>{
+          const u=(t.usosEnCursos||0)+(t.usosEnVideos||0);
+          return `<span class="pill" title="Cursos: ${t.usosEnCursos}, Videos: ${t.usosEnVideos}">${esc(t.nombre)} (${u})</span>`;
+        }).join(''):'<span class="muted">Sin tags.</span>';
+      }
+      function renderPanel(d){
+        const sus=d.suscripcionActiva;
+        const subBlock=sus
+          ? `<div class="card"><h4>Suscripcion activa</h4><p class="small">Plan: <strong>${esc(sus.plan)}</strong>, estado: ${esc(sus.estado)}, hasta ${esc(sus.terminaEn)}</p></div>`
+          : '<div class="card"><h4>Suscripcion activa</h4><p class="muted small">Ninguna en vigor.</p></div>';
+        const compras=!d.cursosComprados?.length
+          ? '<p class="muted small">Sin compras puntuales.</p>'
+          : `<table class="data"><thead><tr><th>Curso</th><th>Comprado</th><th>Importe</th></tr></thead><tbody>${d.cursosComprados.map(c=>`<tr><td>${esc(c.titulo)}</td><td>${esc(c.compradoEn)}</td><td>${esc(c.importe)} ${esc(c.moneda)}</td></tr>`).join('')}</tbody></table>`;
+        const prog=!d.progresoEnVideos?.length
+          ? '<p class="muted small">Sin progreso registrado.</p>'
+          : `<table class="data"><thead><tr><th>Curso</th><th>Video</th><th>%</th><th>Ultimo s</th><th>Completado</th></tr></thead><tbody>${d.progresoEnVideos.map(p=>`<tr><td>${esc(p.cursoTitulo)}</td><td>${esc(p.videoTitulo)}</td><td>${esc(p.progresoPorcentaje)}</td><td>${esc(p.ultimoSegundo)}</td><td>${p.completado?'si':'no'}</td></tr>`).join('')}</tbody></table>`;
+        const vistas=!d.vistasDiariasRecientes?.length
+          ? '<p class="muted small">Sin filas en vistas_diarias_video para los cursos de este alumno.</p>'
+          : `<table class="data"><thead><tr><th>Fecha</th><th>Curso</th><th>Video</th><th>Vistas (dia)</th></tr></thead><tbody>${d.vistasDiariasRecientes.map(v=>`<tr><td>${esc(v.dia)}</td><td>${esc(v.cursoTitulo)}</td><td>${esc(v.videoTitulo)}</td><td>${esc(v.vistas)}</td></tr>`).join('')}</tbody></table>`;
+        $('panelContenido').innerHTML=`
+          <div class="card"><h3>${esc(d.usuario.nombreMostrado)}</h3><p class="small muted">${esc(d.usuario.email)}</p></div>
+          <div class="grid" style="margin-top:10px;">${subBlock}</div>
+          <div class="card" style="margin-top:12px;"><h4>Cursos comprados (usuarios_cursos)</h4>${compras}</div>
+          <div class="card" style="margin-top:12px;"><h4>Progreso en videos (progreso_usuario_video)</h4>${prog}</div>
+          <div class="card" style="margin-top:12px;"><h4>Visualizaciones por dia (vistas_diarias_video)</h4>${vistas}</div>`;
+      }
+
+      function renderHome(data){ $('home').innerHTML=data.map(g=>`<div class="card"><h3>${esc(g.categoria)}</h3><ul>${g.videos.map(v=>`<li><strong>${esc(v.videoTitulo)}</strong><br/><span class="small muted">${esc(v.cursoTitulo)}</span></li>`).join('')}</ul></div>`).join(''); }
+      function renderCursos(data){
+        $('cursos').innerHTML=data.length?data.map(c=>{
+          const ruta=c.categoriaRutaLegible?`<p class="small"><span class="pill-ok">${esc(c.categoriaRutaLegible)}</span></p>`:`<p><span class="pill">${esc(c.categoria)}</span></p>`;
+          return `<div class="card"><h3>${esc(c.titulo)}</h3>${ruta}<p>${esc(c.descripcionCorta)}</p><p class="small muted">slug: ${esc(c.slug)} · curso ${c.esPublico?'<span class="pill-ok">publico</span>':'<span class="pill-warn">no publico</span>'}</p></div>`;
+        }).join(''):'<div class="card"><p class="muted">Sin cursos en este filtro.</p></div>';
+        const options=data.map(c=>`<option value="${esc(c.slug)}">${esc(c.titulo)}</option>`).join('');
+        $('cursoSelect').innerHTML=options; $('editarCursoSelect').innerHTML=options;
+      }
+      function nivelPill(n){
+        const x=String(n||'');
+        if(x==='public') return '<span class="pill-ok">public</span>';
+        if(x==='subscribers') return '<span class="pill-warn">subscribers</span>';
+        return `<span class="pill">${esc(x)}</span>`;
+      }
+      function renderTagsList(tags){
+        if(!tags||!tags.length) return '<span class="small muted">sin tags</span>';
+        return tags.map(t=>`<span class="pill">${esc(t.nombre)}</span>`).join('');
+      }
+      function renderCursoDetalle(d){
+        const tagsCurso=renderTagsList(d.tagsCurso);
+        const videos=(d.videos||[]).map(v=>{
+          let tags=[];
+          if(Array.isArray(v.tags)) tags=v.tags;
+          else if(typeof v.tags==='string'){ try{ tags=JSON.parse(v.tags);}catch(_){ tags=[]; } }
+          return `<li><strong>${esc(v.titulo)}</strong> · ${esc(v.autorNombre)}<br/>
+            <span class="small">Acceso: ${nivelPill(v.nivelAcceso)} · vistas cache: <strong>${esc(v.vistasCache)}</strong> · suma vistas_diarias: <strong>${esc(v.vistasDiariasTotales)}</strong></span><br/>
+            <span class="small muted">Tags video:</span> ${renderTagsList(tags)}</li>`;
+        }).join('');
+        const articulos=(d.articulos||[]).map(a=>`<li><strong>${esc(a.titulo)}</strong> · ${esc(a.autorNombre)}<br/>
+          <span class="small">Acceso: ${nivelPill(a.nivelAcceso)} · vistas cache: <strong>${esc(a.vistasCache)}</strong> · paginas: ${esc(a.numeroPag||'-')}</span></li>`).join('');
+        const ruta=d.categoriaRutaLegible?`<p><span class="pill-ok">${esc(d.categoriaRutaLegible)}</span></p>`:'';
+        $('cursoDetalle').innerHTML=`<div class="card"><h3>${esc(d.titulo)}</h3>${ruta}<p>${esc(d.descripcionCorta)}</p>
+          <p class="small">Curso: ${d.esPublico?'<span class="pill-ok">100% publico (cabecera)</span>':'<span class="pill-warn">cabecera restringida / mixta</span>'} — los videos pueden mezclar <code>public</code> y <code>subscribers</code>.</p>
+          <p class="small muted">Vistas cache (suma videos del curso): <strong>${esc(d.vistasTotalesCache)}</strong> · Articulos (cache vistas): <strong>${esc(d.vistasTotalesArticulos)}</strong></p>
+          <p class="small muted">Tags del curso (cursos_tags):</p><div class="toolbar" style="margin-bottom:12px;">${tagsCurso}</div>
+          <div class="grid"><div class="card"><h4>Videos</h4><ul>${videos||'<li class="muted">Sin videos</li>'}</ul></div><div class="card"><h4>Articulos</h4><ul>${articulos||'<li class="muted">Sin articulos</li>'}</ul></div></div></div>`;
+      }
+      function renderAutores(data){ const options=data.map(a=>`<option value="${esc(a.slug)}">${esc(a.nombreMostrado)}</option>`).join(''); $('autorSelect').innerHTML=options; $('editarAutorSelect').innerHTML=options; $('nuevoCursoAutor').innerHTML=options; }
+      function renderAutorDetalle(d){ $('autorDetalle').innerHTML=`<div class="card"><h3>${esc(d.nombreMostrado)}</h3><p>${esc(d.bioCorta||'')}</p><h4>Cursos</h4><ul>${(d.cursos||[]).map(c=>`<li><strong>${esc(c.titulo)}</strong><br/><span class="small muted">${esc(c.descripcionCorta)}</span></li>`).join('')||'<li class="muted">Sin cursos</li>'}</ul></div>`; }
+      function renderCategoriasForForm(data){ $('nuevaCategoriaCurso').innerHTML=data.map(c=>`<option value="${esc(c.slug)}">${esc(c.rutaLegible||c.nombre)}</option>`).join(''); }
+      function renderUsuariosPanelSelect(data){ $('panelUsuarioSelect').innerHTML=data.map(u=>`<option value="${esc(u.email)}">${esc(u.nombreMostrado)} (${esc(u.email)})</option>`).join(''); }
+      function setMsg(text,type='muted'){ const el=$('msg'); el.textContent=text; el.className=`small ${type}`; }
+
+      async function loadArbol(){ renderArbol(await request('/api/arbol-categorias')); }
+      async function loadTagsNube(){ renderTagsNube(await request('/api/tags-nube')); }
+      async function loadHome(){ renderHome(await request('/api/home')); }
+      async function loadCursos(c){ const q=c?`?categoria=${encodeURIComponent(c)}`:''; renderCursos(await request('/api/cursos'+q)); }
+      async function loadCursoDetalle(){ const slug=$('cursoSelect').value; if(!slug) return; renderCursoDetalle(await request('/api/cursos/'+encodeURIComponent(slug))); }
+      async function loadAutores(){ renderAutores(await request('/api/autores')); }
+      async function loadAutorDetalle(){ const slug=$('autorSelect').value; if(!slug) return; renderAutorDetalle(await request('/api/autores/'+encodeURIComponent(slug))); }
+      async function loadCategorias(){ renderCategoriasForForm(await request('/api/arbol-categorias')); }
+      async function loadUsuariosPanel(){ renderUsuariosPanelSelect(await request('/api/usuarios')); }
+      async function loadPanelDemo(){
+        try{
+          const email=$('panelUsuarioSelect').value;
+          renderPanel(await request('/api/panel-demo?email='+encodeURIComponent(email)));
+        }catch(e){ $('panelContenido').innerHTML='<p class="error small">'+esc(e.message)+'</p>'; }
+      }
+
+      async function crearAutor(){ try{ await request('/api/autores',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombreMostrado:$('nuevoAutorNombre').value.trim(),bioCorta:$('nuevoAutorBio').value.trim()})}); $('nuevoAutorNombre').value=''; $('nuevoAutorBio').value=''; setMsg('Autor creado','ok'); await loadAutores(); }catch(e){ setMsg(e.message,'error'); } }
+      async function editarAutor(){ try{ const slug=$('editarAutorSelect').value; await request('/api/autores/'+encodeURIComponent(slug),{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombreMostrado:$('editarAutorNombre').value.trim(),bioCorta:$('editarAutorBio').value.trim()})}); $('editarAutorNombre').value=''; $('editarAutorBio').value=''; setMsg('Autor actualizado','ok'); await loadAutores(); }catch(e){ setMsg(e.message,'error'); } }
+      async function eliminarAutor(){ try{ const slug=$('editarAutorSelect').value; await request('/api/autores/'+encodeURIComponent(slug),{method:'DELETE'}); setMsg('Autor eliminado','ok'); await loadAutores(); }catch(e){ setMsg(e.message,'error'); } }
+
+      async function crearCurso(){ try{ await request('/api/cursos',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({titulo:$('nuevoCursoTitulo').value.trim(),descripcionCorta:$('nuevoCursoDesc').value.trim(),categoriaSlug:$('nuevaCategoriaCurso').value,autorSlug:$('nuevoCursoAutor').value,esPublico:$('nuevoCursoPublico').checked})}); $('nuevoCursoTitulo').value=''; $('nuevoCursoDesc').value=''; $('nuevoCursoPublico').checked=false; setMsg('Curso creado','ok'); await Promise.all([loadCursos(),loadHome()]); }catch(e){ setMsg(e.message,'error'); } }
+      async function editarCurso(){ try{ const slug=$('editarCursoSelect').value; await request('/api/cursos/'+encodeURIComponent(slug),{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({titulo:$('editarCursoTitulo').value.trim(),descripcionCorta:$('editarCursoDesc').value.trim()})}); $('editarCursoTitulo').value=''; $('editarCursoDesc').value=''; setMsg('Curso actualizado','ok'); await Promise.all([loadCursos(),loadHome()]); }catch(e){ setMsg(e.message,'error'); } }
+      async function eliminarCurso(){ try{ const slug=$('editarCursoSelect').value; await request('/api/cursos/'+encodeURIComponent(slug),{method:'DELETE'}); setMsg('Curso eliminado','ok'); await Promise.all([loadCursos(),loadHome()]); }catch(e){ setMsg(e.message,'error'); } }
+
+      window.loadCursos=loadCursos; window.loadCursoDetalle=loadCursoDetalle; window.loadAutorDetalle=loadAutorDetalle;
+      window.crearAutor=crearAutor; window.editarAutor=editarAutor; window.eliminarAutor=eliminarAutor;
+      window.crearCurso=crearCurso; window.editarCurso=editarCurso; window.eliminarCurso=eliminarCurso;
+      window.loadPanelDemo=loadPanelDemo;
+
+      Promise.all([loadArbol(),loadTagsNube(),loadHome(),loadCursos(),loadAutores(),loadCategorias(),loadUsuariosPanel()]).then(()=>loadPanelDemo()).catch(e=>setMsg(e.message,'error'));
+    </script>
+  </body>
+</html>

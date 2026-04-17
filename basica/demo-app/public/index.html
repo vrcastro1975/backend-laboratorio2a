@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L2A Básica - Demo relacional</title>
+    <style>
+      :root { --bg:#0f172a; --card:#111827; --card-soft:#1f2937; --text:#e5e7eb; --muted:#9ca3af; --border:#374151; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:Inter,Arial,sans-serif; background:var(--bg); color:var(--text); }
+      .container { max-width:1150px; margin:0 auto; padding:24px; }
+      section { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:16px; }
+      .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
+      .card { background:var(--card-soft); border:1px solid var(--border); border-radius:10px; padding:12px; }
+      .toolbar { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+      button,select,input { background:#111827; color:var(--text); border:1px solid var(--border); border-radius:8px; padding:8px 10px; }
+      button { cursor:pointer; }
+      .muted{color:var(--muted);} .small{font-size:.85rem;} .ok{color:#86efac;} .error{color:#fca5a5;}
+      .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:rgba(56,189,248,.15);color:#7dd3fc;}
+      ul{padding-left:18px;}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Laboratorio 2A - Demo básica (PostgreSQL)</h1>
+      <p class="muted">Node + TypeScript (servidor HTTP nativo), sin Express.</p>
+
+      <section><h2>Home: últimos vídeos por categoría</h2><div id="home" class="grid"></div></section>
+
+      <section>
+        <h2>Cursos por área</h2>
+        <div class="toolbar">
+          <button onclick="loadCursos()">Todos</button>
+          <button onclick="loadCursos('frontend')">Front End</button>
+          <button onclick="loadCursos('backend')">Backend</button>
+          <button onclick="loadCursos('devops')">DevOps</button>
+        </div>
+        <div id="cursos" class="grid"></div>
+      </section>
+
+      <section>
+        <h2>Detalle de curso</h2>
+        <div class="toolbar"><select id="cursoSelect"></select><button onclick="loadCursoDetalle()">Ver curso</button></div>
+        <div id="cursoDetalle"></div>
+      </section>
+
+      <section>
+        <h2>Autores</h2>
+        <div class="toolbar"><select id="autorSelect"></select><button onclick="loadAutorDetalle()">Ver autor</button></div>
+        <div id="autorDetalle"></div>
+      </section>
+
+      <section>
+        <h2>CRUD rápido</h2>
+        <div class="card">
+          <h3>Nuevo autor</h3>
+          <div class="toolbar"><input id="nuevoAutorNombre" placeholder="Nombre mostrado" /><input id="nuevoAutorBio" placeholder="Bio corta" /><button onclick="crearAutor()">Crear autor</button></div>
+        </div>
+        <div class="card" style="margin-top:12px;">
+          <h3>Nuevo curso</h3>
+          <div class="toolbar"><input id="nuevoCursoTitulo" placeholder="Titulo" /><input id="nuevoCursoDesc" placeholder="Descripcion corta" /><select id="nuevaCategoriaCurso"></select><select id="nuevoCursoAutor"></select><button onclick="crearCurso()">Crear curso</button></div>
+        </div>
+        <div class="card" style="margin-top:12px;">
+          <h3>Editar / eliminar</h3>
+          <div class="toolbar"><select id="editarCursoSelect"></select><input id="editarCursoTitulo" placeholder="Nuevo titulo" /><input id="editarCursoDesc" placeholder="Nueva descripcion" /><button onclick="editarCurso()">Editar curso</button><button onclick="eliminarCurso()">Eliminar curso</button></div>
+          <div class="toolbar"><select id="editarAutorSelect"></select><input id="editarAutorNombre" placeholder="Nuevo nombre" /><input id="editarAutorBio" placeholder="Nueva bio" /><button onclick="editarAutor()">Editar autor</button><button onclick="eliminarAutor()">Eliminar autor</button></div>
+        </div>
+        <p id="msg" class="small muted"></p>
+      </section>
+    </div>
+
+    <script>
+      const $=(id)=>document.getElementById(id);
+      async function request(url, options){ const r=await fetch(url,options); const d=await r.json().catch(()=>({})); if(!r.ok) throw new Error(d.message||`Error ${r.status}`); return d; }
+
+      function renderHome(data){ $('home').innerHTML=data.map(g=>`<div class="card"><h3>${g.categoria}</h3><ul>${g.videos.map(v=>`<li><strong>${v.videoTitulo}</strong><br/><span class="small muted">${v.cursoTitulo}</span></li>`).join('')}</ul></div>`).join(''); }
+      function renderCursos(data){
+        $('cursos').innerHTML=data.length?data.map(c=>`<div class="card"><h3>${c.titulo}</h3><p><span class="pill">${c.categoria}</span></p><p>${c.descripcionCorta}</p><p class="small muted">slug: ${c.slug}</p></div>`).join(''):'<div class="card"><p class="muted">Sin cursos en este filtro.</p></div>';
+        const options=data.map(c=>`<option value="${c.slug}">${c.titulo}</option>`).join('');
+        $('cursoSelect').innerHTML=options; $('editarCursoSelect').innerHTML=options;
+      }
+      function renderCursoDetalle(d){ const videos=(d.videos||[]).map(v=>`<li><strong>${v.titulo}</strong> · ${v.autorNombre}</li>`).join(''); const articulos=(d.articulos||[]).map(a=>`<li><strong>${a.titulo}</strong> · ${a.autorNombre}</li>`).join(''); $('cursoDetalle').innerHTML=`<div class="card"><h3>${d.titulo}</h3><p>${d.descripcionCorta}</p><div class="grid"><div class="card"><h4>Videos</h4><ul>${videos||'<li class="muted">Sin videos</li>'}</ul></div><div class="card"><h4>Articulos</h4><ul>${articulos||'<li class="muted">Sin articulos</li>'}</ul></div></div></div>`; }
+      function renderAutores(data){ const options=data.map(a=>`<option value="${a.slug}">${a.nombreMostrado}</option>`).join(''); $('autorSelect').innerHTML=options; $('editarAutorSelect').innerHTML=options; $('nuevoCursoAutor').innerHTML=options; }
+      function renderAutorDetalle(d){ $('autorDetalle').innerHTML=`<div class="card"><h3>${d.nombreMostrado}</h3><p>${d.bioCorta||''}</p><h4>Cursos</h4><ul>${(d.cursos||[]).map(c=>`<li><strong>${c.titulo}</strong><br/><span class="small muted">${c.descripcionCorta}</span></li>`).join('')||'<li class="muted">Sin cursos</li>'}</ul></div>`; }
+      function renderCategoriasForForm(data){ $('nuevaCategoriaCurso').innerHTML=data.map(c=>`<option value="${c.slug}">${c.nombre}</option>`).join(''); }
+      function setMsg(text,type='muted'){ const el=$('msg'); el.textContent=text; el.className=`small ${type}`; }
+
+      async function loadHome(){ renderHome(await request('/api/home')); }
+      async function loadCursos(c){ const q=c?`?categoria=${c}`:''; renderCursos(await request('/api/cursos'+q)); }
+      async function loadCursoDetalle(){ const slug=$('cursoSelect').value; if(!slug) return; renderCursoDetalle(await request('/api/cursos/'+slug)); }
+      async function loadAutores(){ renderAutores(await request('/api/autores')); }
+      async function loadAutorDetalle(){ const slug=$('autorSelect').value; if(!slug) return; renderAutorDetalle(await request('/api/autores/'+slug)); }
+      async function loadCategorias(){ renderCategoriasForForm(await request('/api/categorias')); }
+
+      async function crearAutor(){ try{ await request('/api/autores',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombreMostrado:$('nuevoAutorNombre').value.trim(),bioCorta:$('nuevoAutorBio').value.trim()})}); $('nuevoAutorNombre').value=''; $('nuevoAutorBio').value=''; setMsg('Autor creado','ok'); await loadAutores(); }catch(e){ setMsg(e.message,'error'); } }
+      async function editarAutor(){ try{ const slug=$('editarAutorSelect').value; await request('/api/autores/'+slug,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombreMostrado:$('editarAutorNombre').value.trim(),bioCorta:$('editarAutorBio').value.trim()})}); $('editarAutorNombre').value=''; $('editarAutorBio').value=''; setMsg('Autor actualizado','ok'); await loadAutores(); }catch(e){ setMsg(e.message,'error'); } }
+      async function eliminarAutor(){ try{ const slug=$('editarAutorSelect').value; await request('/api/autores/'+slug,{method:'DELETE'}); setMsg('Autor eliminado','ok'); await loadAutores(); }catch(e){ setMsg(e.message,'error'); } }
+
+      async function crearCurso(){ try{ await request('/api/cursos',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({titulo:$('nuevoCursoTitulo').value.trim(),descripcionCorta:$('nuevoCursoDesc').value.trim(),categoriaSlug:$('nuevaCategoriaCurso').value,autorSlug:$('nuevoCursoAutor').value})}); $('nuevoCursoTitulo').value=''; $('nuevoCursoDesc').value=''; setMsg('Curso creado','ok'); await Promise.all([loadCursos(),loadHome()]); }catch(e){ setMsg(e.message,'error'); } }
+      async function editarCurso(){ try{ const slug=$('editarCursoSelect').value; await request('/api/cursos/'+slug,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({titulo:$('editarCursoTitulo').value.trim(),descripcionCorta:$('editarCursoDesc').value.trim()})}); $('editarCursoTitulo').value=''; $('editarCursoDesc').value=''; setMsg('Curso actualizado','ok'); await Promise.all([loadCursos(),loadHome()]); }catch(e){ setMsg(e.message,'error'); } }
+      async function eliminarCurso(){ try{ const slug=$('editarCursoSelect').value; await request('/api/cursos/'+slug,{method:'DELETE'}); setMsg('Curso eliminado','ok'); await Promise.all([loadCursos(),loadHome()]); }catch(e){ setMsg(e.message,'error'); } }
+
+      window.loadCursos=loadCursos; window.loadCursoDetalle=loadCursoDetalle; window.loadAutorDetalle=loadAutorDetalle;
+      window.crearAutor=crearAutor; window.editarAutor=editarAutor; window.eliminarAutor=eliminarAutor;
+      window.crearCurso=crearCurso; window.editarCurso=editarCurso; window.eliminarCurso=eliminarCurso;
+
+      Promise.all([loadHome(),loadCursos(),loadAutores(),loadCategorias()]).catch(e=>setMsg(e.message,'error'));
+    </script>
+  </body>
+</html>

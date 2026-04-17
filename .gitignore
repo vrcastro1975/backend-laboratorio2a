@@ -1,1 +1,6 @@
 *
+!.gitignore
+!basica/
+!basica/**
+!opcional/
+!opcional/**
