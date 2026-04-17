@@ -1,7 +1,7 @@
 FROM node:20-alpine
 WORKDIR /app
-COPY package.json tsconfig.json ./
-RUN npm install
+COPY package.json package-lock.json tsconfig.json ./
+RUN npm ci
 COPY src ./src
 COPY public ./public
 EXPOSE 3000

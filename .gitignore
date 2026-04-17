@@ -4,3 +4,10 @@
 !basica/**
 !opcional/
 !opcional/**
+
+# Generados / locales (no versionar)
+node_modules/
+dist/
+.env
+.env.*
+*.log
